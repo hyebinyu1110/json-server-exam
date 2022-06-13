@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <pre></pre>
+    <script>
+        //XMLHttpRequest 객체 생성
+        const xhr = new XMLHttpRequest();
+        // HTTP 요청 초기화
+        //todo 리소스에서 id를 이용하여 todo를 삭제한다.
+        xhr.open("DELETE", '/todos/5');
+
+        // HTTP 요청 전송
+        // 새로운 todo를 전송하기위해 페이로드를 서버에 전송하여야 한다. 
+        xhr.send();
+        // load 이벤트는 요청이 성공적으로 완료된 경우 발생한다.
+        xhr.onload = () => {
+            //status 프로퍼티 값이 200(OK)나 201(created) 이면 정상적으로 응답된 상태이다.
+            if (xhr.status === 200) {
+                document.querySelector('pre').textContent = xhr.response;
+            } else {
+                console.error('Error', xhr.status, xhr.statusText);
+            }
+        };
+    </script>
+</body>
+
+</html>
